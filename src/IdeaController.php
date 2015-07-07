@@ -1,21 +1,21 @@
 <?php namespace App;
 
-use App\Contracts\IdeaRepositoryInterface;
+use App\Queries\SearchBlockedIdeasBetweenDates;
 
 class IdeaController {
 
 	/**
-	 * @var IdeaRepositoryInterface
+	 * @var SearchBlockedIdeasBetweenDates
 	 */
-	protected $ideaRepository;
+	protected $query;
 
 	/**
 	 * Instantiate our dependencies.
 	 *
-	 * @param IdeaRepositoryInterface $ideaRepository
+	 * @param SearchBlockedIdeasBetweenDates $query
 	 */
-	public function __construct(IdeaRepositoryInterface $ideaRepository) {
-		$this->ideaRepository = $ideaRepository;
+	public function __construct(SearchBlockedIdeasBetweenDates $query) {
+		$this->query = $query;
 	}
 
 	/**
@@ -24,7 +24,9 @@ class IdeaController {
 	 * @return Collection
 	 */
 	public function index() {
+		compact(Input::only('keywords', 'start', 'end'));
 
+		return $this->query->execute($keywords, $start, $end);
 	}
 
 	/**

@@ -1,10 +1,9 @@
 <?php namespace App\Repositories;
 
 use Idea;
-use App\Contracts\ModeratableInterface;
 use App\Contracts\IdeaRepositoryInterface;
 
-class IdeaRepository extends EloquentRepository implements IdeaRepositoryInterface, ModeratableInterface {
+class IdeaRepository extends EloquentRepository implements IdeaRepositoryInterface {
 
 	protected $model;
 
