@@ -1,9 +1,10 @@
 <?php namespace App\Repositories;
 
 use Idea;
+use App\Contracts\ModeratableInterface;
 use App\Contracts\IdeaRepositoryInterface;
 
-class IdeaRepository extends EloquentRepository implements IdeaRepositoryInterface {
+class IdeaRepository extends EloquentRepository implements IdeaRepositoryInterface, ModeratableInterface {
 
 	protected $model;
 
@@ -19,6 +20,12 @@ class IdeaRepository extends EloquentRepository implements IdeaRepositoryInterfa
 
 	public function filterByUser($userId) {
 		$this->model = $this->model->byUser($userId);
+
+		return $this;
+	}
+
+	public function filterByModerationStatus($status) {
+		$this->model = $this->model->moderationStatus($status);
 
 		return $this;
 	}
