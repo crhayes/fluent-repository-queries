@@ -1,5 +1,9 @@
 <?php namespace App\Queries;
 
+use SoapboxService;
+use App\Contracts\IdeaRepository;
+use App\Contracts\IdeaFilterQueryParams;
+
 class IdeaFilterQuery {
 
 	protected $repository;
@@ -13,7 +17,7 @@ class IdeaFilterQuery {
 	public function execute(IdeaFilterQueryParams $filters) {
 		$this->repository->filterBySoapbox($this->soapboxService->getId());
 
-		if ($ids = $filter->getIds()) {
+		if ($ids = $filters->getIds()) {
 			$this->repository->filterByIds($ids);
 		}
 
@@ -21,7 +25,7 @@ class IdeaFilterQuery {
 			$this->repository->filterByUser($userId);
 		}
 
-		return $this->repository->get();
+		return $this->repository->get(['*']);
 	}
 
 }
