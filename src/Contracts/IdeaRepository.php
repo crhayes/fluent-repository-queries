@@ -1,6 +1,6 @@
 <?php namespace App\Contracts;
 
-interface IdeaRepositoryInterface extends RepositoryInterface {
+interface IdeaRepository extends Repository {
 
 	public function filterByIds(array $ids);
 

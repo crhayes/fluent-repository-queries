@@ -1,9 +1,9 @@
 <?php namespace App\Repositories;
 
 use Idea;
-use App\Contracts\IdeaRepositoryInterface;
+use App\Contracts\IdeaRepository;
 
-class IdeaRepository extends EloquentRepository implements IdeaRepositoryInterface {
+class EloquentIdeaRepository extends EloquentRepository implements IdeaRepository {
 
 	protected $model;
 

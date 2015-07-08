@@ -3,7 +3,7 @@
 use Model;
 use Closure;
 
-interface RepositoryInterface {
+interface Repository {
 
 	public function get(array $columns);
 

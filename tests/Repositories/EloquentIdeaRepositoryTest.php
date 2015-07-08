@@ -6,7 +6,7 @@ class IdeaRepositoryTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 		$this->mockIdea = m::mock('Idea');
-		$this->ideaRepository = new App\Repositories\IdeaRepository($this->mockIdea);
+		$this->ideaRepository = new App\Repositories\EloquentIdeaRepository($this->mockIdea);
 	}
 
 	public function tearDown() {
@@ -14,7 +14,8 @@ class IdeaRepositoryTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testCanBeInstantiated() {
-		$this->assertInstanceOf('App\Repositories\IdeaRepository', $this->ideaRepository);
+		$this->assertInstanceOf('App\Contracts\IdeaRepository', $this->ideaRepository);
+		$this->assertInstanceOf('App\Repositories\EloquentIdeaRepository', $this->ideaRepository);
 	}
 
 	public function testCanFilterByIds() {

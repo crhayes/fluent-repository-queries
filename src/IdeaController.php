@@ -5,16 +5,16 @@ use App\Queries\SearchBlockedIdeasBetweenDates;
 class IdeaController {
 
 	/**
-	 * @var SearchBlockedIdeasBetweenDates
+	 * @var IdeaFilterQuery
 	 */
 	protected $query;
 
 	/**
 	 * Instantiate our dependencies.
 	 *
-	 * @param SearchBlockedIdeasBetweenDates $query
+	 * @param IdeaFilterQuery $query
 	 */
-	public function __construct(SearchBlockedIdeasBetweenDates $query) {
+	public function __construct(IdeaFilterQuery $query) {
 		$this->query = $query;
 	}
 
@@ -24,9 +24,9 @@ class IdeaController {
 	 * @return Collection
 	 */
 	public function index() {
-		compact(Input::only('keywords', 'start', 'end'));
+		$filters = Input::only('keywords', 'start', 'end');
 
-		return $this->query->execute($keywords, $start, $end);
+		return $this->query->execute(new IdeaApiQueryParams($filters));
 	}
 
 	/**

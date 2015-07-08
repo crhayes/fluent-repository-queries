@@ -2,10 +2,10 @@
 
 use Closure;
 use App\Paginator;
-use App\Contracts\RepositoryInterface;
+use App\Contracts\Repository;
 use Illuminate\Database\Eloquent\Model;
 
-abstract class EloquentRepository implements RepositoryInterface {
+abstract class EloquentRepository implements Repository {
 
 	protected $model;
 	protected $paginator;

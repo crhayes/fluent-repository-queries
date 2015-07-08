@@ -4,13 +4,13 @@ class SearchBlockedIdeasBetweenDates {
 
 	protected $repository;
 
-	public function __construct(IdeaRepositoryInterface $repository) {
+	public function __construct(IdeaRepository $repository) {
 		$this->repository = $repository;
 	}
 
 	public function execute($keywords, $start, $end) {
 		return $this->repository
-			->filterByModerationStatus(IdeaRepositoryInterface::STATUS_BLOCKED)
+			->filterByModerationStatus(IdeaRepository::STATUS_BLOCKED)
 			->filterByKeywords($keywords)
 			->filterBetweenDates($start, $end);
 	}
