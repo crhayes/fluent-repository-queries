@@ -1,7 +1,7 @@
 <?php namespace App;
 
-use App\IdeaApiQueryParams;
 use App\Queries\IdeaFilterQuery;
+use App\Queries\Params\IdeaApiQueryParams;
 
 class IdeaController {
 

@@ -1,6 +1,7 @@
-<?php namespace App;
+<?php namespace App\Queries\Params;
 
 use Illuminate\Http\Request;
+use App\Contracts\IdeaFilterQueryParams;
 
 class IdeaApiQueryParams extends Request implements IdeaFilterQueryParams {
 
