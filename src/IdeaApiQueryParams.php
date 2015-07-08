@@ -1,24 +1,20 @@
 <?php namespace App;
 
-class IdeaApiQueryParams implements IdeaFilterQueryParams {
+use Illuminate\Http\Request;
 
-	protected $params;
-
-	public function __construct($params) {
-		$this->params = $params;
-	}
+class IdeaApiQueryParams extends Request implements IdeaFilterQueryParams {
 
 	public function getIds() {
-		if ( ! array_key_exists($this->params, 'ids')) {
-			return $this->params['ids'];
+		if ($this->has('ids')) {
+			return $this->input('ids');
 		}
 
 		return null;
 	}
 
 	public function getUserId() {
-		if ( ! array_key_exists($this->params, 'user_id')) {
-			return $this->params['user_id'];
+		if ($this->has('user_id')) {
+			return $this->input('user_id');
 		}
 
 		return null;
