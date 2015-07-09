@@ -15,18 +15,18 @@ abstract class EloquentRepository implements Repository {
 		$this->paginator = $paginator;
 	}
 
-	public function get(array $columns = ['*']) {
+	public function get(array $columns = array('*')) {
 		return $this->model->get($columns);
 	}
 
-	public function find($id, array $columns = ['*']) {
+	public function find($id, array $columns = array('*')) {
 		return $this->model->find($id, $columns);
 	}
 
-	public function paginate($perPage = 10, $page = 1, array $columns = ['*']) {
+	public function paginate($perPage = 10, $page = 1, array $columns = array('*')) {
 		$query = $this->model->take($perPage)->offset($perPage * ($page - 1));
 
-        return $this->paginator->make($query->get($columns), $query->count(), $perPage, $page);
+		return $this->paginator->make($query->get($columns), $query->count(), $perPage, $page);
 	}
 
 	public function chunk($perChunk, Closure $callback) {
